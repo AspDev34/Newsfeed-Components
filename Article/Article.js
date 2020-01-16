@@ -113,6 +113,7 @@ const data = [
 */
 
 function newComponent(title, date, firstParagraph, secondParagraph, thirdParagraph) {
+  // Create Elements
   const parentDiv = document.createElement('div');
   const articleTitle = document.createElement('h2');
   const articleDate = document.createElement('p');
@@ -121,10 +122,15 @@ function newComponent(title, date, firstParagraph, secondParagraph, thirdParagra
   const paraThree = document.createElement('p');
   const expandButton = document.createElement('span');
 
+  // Add classes for created elements
   parentDiv.classList.add('article');
   articleDate.classList.add('date');
   expandButton.classList.add('expandButton');
+  paraOne.classList.add('content');
+  paraTwo.classList.add('content');
+  paraThree.classList.add('content');
 
+  // Append created elements to the containing div. 
   parentDiv.append(articleTitle);
   parentDiv.append(articleDate);
   parentDiv.append(paraOne);
@@ -132,12 +138,14 @@ function newComponent(title, date, firstParagraph, secondParagraph, thirdParagra
   parentDiv.append(paraThree);
   parentDiv.append(expandButton);
 
+  // Set the content
   articleTitle.textContent = title;
   articleDate.textContent = date;
   paraOne.textContent = firstParagraph;
   paraTwo.textContent = secondParagraph;
   paraThree.textContent = thirdParagraph;
 
+  // Add event listener to mouseclick
   expandButton.addEventListener('click', (event) => {
 
   })
@@ -148,8 +156,10 @@ function newComponent(title, date, firstParagraph, secondParagraph, thirdParagra
 const articles = document.querySelector('.articles');
 
 data.map((newsObj) => {
+  
   articles.append(newComponent(newsObj.title, newsObj.date, newsObj.firstParagraph, newsObj.secondParagraph, newsObj.thirdParagraph))
 })
+
 
 
 
