@@ -110,5 +110,47 @@ const data = [
   Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
 
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
-
 */
+
+function newComponent(title, date, firstParagraph, secondParagraph, thirdParagraph) {
+  const parentDiv = document.createElement('div');
+  const articleTitle = document.createElement('h2');
+  const articleDate = document.createElement('p');
+  const paraOne = document.createElement('p');
+  const paraTwo = document.createElement('p');
+  const paraThree = document.createElement('p');
+  const expandButton = document.createElement('span');
+
+  parentDiv.classList.add('article');
+  articleDate.classList.add('date');
+  expandButton.classList.add('expandButton');
+
+  parentDiv.append(articleTitle);
+  parentDiv.append(articleDate);
+  parentDiv.append(paraOne);
+  parentDiv.append(paraTwo);
+  parentDiv.append(paraThree);
+  parentDiv.append(expandButton);
+
+  articleTitle.textContent = title;
+  articleDate.textContent = date;
+  paraOne.textContent = firstParagraph;
+  paraTwo.textContent = secondParagraph;
+  paraThree.textContent = thirdParagraph;
+
+  expandButton.addEventListener('click', (event) => {
+
+  })
+
+  return parentDiv;
+}
+
+const articles = document.querySelector('.articles');
+
+data.map((newsObj) => {
+  articles.append(newComponent(newsObj.title, newsObj.date, newsObj.firstParagraph, newsObj.secondParagraph, newsObj.thirdParagraph))
+})
+
+
+
+
