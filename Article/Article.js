@@ -144,10 +144,11 @@ function newComponent(title, date, firstParagraph, secondParagraph, thirdParagra
   paraOne.textContent = firstParagraph;
   paraTwo.textContent = secondParagraph;
   paraThree.textContent = thirdParagraph;
+  expandButton.textContent = "Click here"
 
   // Add event listener to mouseclick
-  expandButton.addEventListener('click', (event) => {
-
+  expandButton.addEventListener('click', () => {
+    parentDiv.classList.toggle('article-open');
   })
 
   return parentDiv;
