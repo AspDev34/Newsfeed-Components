@@ -110,5 +110,58 @@ const data = [
   Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
 
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
-
 */
+
+function newComponent(title, date, firstParagraph, secondParagraph, thirdParagraph) {
+  // Create Elements
+  const parentDiv = document.createElement('div');
+  const articleTitle = document.createElement('h2');
+  const articleDate = document.createElement('p');
+  const paraOne = document.createElement('p');
+  const paraTwo = document.createElement('p');
+  const paraThree = document.createElement('p');
+  const expandButton = document.createElement('span');
+
+  // Add classes for created elements
+  parentDiv.classList.add('article');
+  articleDate.classList.add('date');
+  expandButton.classList.add('expandButton');
+  paraOne.classList.add('content');
+  paraTwo.classList.add('content');
+  paraThree.classList.add('content');
+
+  // Append created elements to the containing div. 
+  parentDiv.append(articleTitle);
+  parentDiv.append(articleDate);
+  parentDiv.append(paraOne);
+  parentDiv.append(paraTwo);
+  parentDiv.append(paraThree);
+  parentDiv.append(expandButton);
+
+  // Set the content
+  articleTitle.textContent = title;
+  articleDate.textContent = date;
+  paraOne.textContent = firstParagraph;
+  paraTwo.textContent = secondParagraph;
+  paraThree.textContent = thirdParagraph;
+  expandButton.textContent = "Click here"
+
+  // Add event listener to mouseclick
+  expandButton.addEventListener('click', () => {
+    parentDiv.classList.toggle('article-open');
+  })
+
+  return parentDiv;
+}
+
+const articles = document.querySelector('.articles');
+
+data.map((newsObj) => {
+  
+  articles.append(newComponent(newsObj.title, newsObj.date, newsObj.firstParagraph, newsObj.secondParagraph, newsObj.thirdParagraph))
+})
+
+
+
+
+
